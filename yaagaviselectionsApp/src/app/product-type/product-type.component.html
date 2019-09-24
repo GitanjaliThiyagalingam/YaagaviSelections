@@ -1,0 +1,47 @@
+<div class="container-fluid top-buffer">
+  <div class="row">
+     <div class="col-md-12" style="background:#fae9fc; height: 18rem;">
+      
+      &nbsp;
+    
+    </div>
+  </div>
+</div>
+<div class="container">
+  <h3 class="heading">Handmade Cards</h3>
+  <div class="row top-buffer">  
+    <div class="col-sm" *ngFor="let productType of cards">
+        <div class="card border-0" style="width: 18rem;">
+            <img [routerLink]="['./products', productType.id]" src="data:image/JPEG;base64,{{productType.image}}" 
+                class="card-img-top img-fluid img-thumbnail" style="height: 15rem; width: 15rem;" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{productType.name}}</h5>
+            </div>
+          </div>
+    </div>
+  </div>
+  <h3 class="heading"> Thread Jewels</h3>
+  <div class="row">
+    <div class="col-sm" *ngFor="let productType of jewels">
+        <div class="card border-0" style="width: 18rem;">
+            <img src="data:image/JPEG;base64,{{productType.image}}" 
+                class="card-img-top img-fluid img-thumbnail" [routerLink]="['./products', productType.id]" style="height: 15rem; width: 15rem;" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{productType.name}}</h5>
+            </div>
+          </div>
+    </div>
+</div>
+<h3 class="heading">Fabric Garlands</h3>
+<div class="row">
+    <div class="col-sm" *ngFor="let productType of garlands">
+        <div class="card border-0" style="width: 18rem;">
+            <img src="data:image/JPEG;base64,{{productType.image}}" 
+                class="card-img-top img-fluid img-thumbnail" [routerLink]="['./products', productType.id]" style="height: 15rem; width: 15rem;" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{productType.name}}</h5>
+            </div>
+          </div>
+    </div>
+  </div>
+</div>

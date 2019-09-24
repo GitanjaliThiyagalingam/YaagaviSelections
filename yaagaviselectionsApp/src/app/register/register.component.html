@@ -1,0 +1,69 @@
+<div *ngIf="isSignedUp; else signupForm">
+  Your registration is successful. Please login!
+</div>
+
+<ng-template #signupForm>
+  <div class="container form_container">
+    <div class="d-flex justify-content-center h-100">
+      <div class="user_card">
+        <div class="d-flex justify-content-center">
+          <div class="brand_logo_container">
+            <img src="./assets/logo1.png" class="brand_logo" alt="Logo">
+          </div>
+        </div>
+        <div class="d-flex justify-content-center form_container">
+          <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+            <div class="input-group mb-3">
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+              </div>
+              <input type="text" class="form-control input_user" name="name" [(ngModel)]="form.name" #name="ngModel"
+                placeholder="name" value="" required />
+            </div>
+            <div *ngIf="f.submitted && name.invalid">
+              <div *ngIf="name.errors.required" style="background-color: red">Name is required</div>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+              </div>
+              <input type="text" class="form-control input_user" name="username" [(ngModel)]="form.username"
+                #username="ngModel" placeholder="username" value="" required />
+            </div>
+            <div *ngIf="f.submitted && username.invalid">
+              <div *ngIf="username.errors.required" style="background-color: red">Username is required</div>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+              </div>
+              <input type="text" class="form-control input_user" name="email" [(ngModel)]="form.email" #email="ngModel"
+                placeholder="email" value="" required email />
+            </div>
+            <div *ngIf="f.submitted && email.invalid">
+              <div *ngIf="email.errors.required" style="background-color: red">Email is required</div>
+              <div *ngIf="email.errors.email" style="background-color: red">Email must be a valid email address</div>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-key"></i></span>
+              </div>
+              <input type="password" class="form-control input_user" name="password" [(ngModel)]="form.password"
+                placeholder="password" value="" #password="ngModel" required minlength="6" />
+            </div>
+            <div *ngIf="f.submitted && password.invalid">
+              <div *ngIf="password.errors.required" style="background-color: red">Password is required</div>
+              <div *ngIf="password.errors.minlength" style="background-color: red">Password must be at least 6 characters</div>
+            </div>
+            <div class="form-group">
+              <button class="btn login_btn">Register</button>
+              <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+                Signup failed!<br />{{errorMessage}}
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

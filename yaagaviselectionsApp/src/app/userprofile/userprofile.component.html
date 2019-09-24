@@ -1,0 +1,60 @@
+<div *ngIf="isLoggedIn; else loggedOut">
+    <div class="container-fluid top-buffer content">
+
+        <div class="col-md-offset-1 col-md-12" style="background:#eeebee; height: 18rem; width: 100%">
+      
+          &nbsp;
+      
+        </div>
+      
+      </div>
+      
+      <div class="imagecard">
+        <div class="row">
+          
+        <a target="_blank" href="./assets/profile.png">
+          <img src="./assets/profile.png" alt="Paris" style="width:150px">
+        </a>
+        <div class="col-sm-6 col-md-8">
+            <h4>
+                Bhaumik Patel</h4>
+            <small><cite title="San Francisco, USA">San Francisco, USA <i class="glyphicon glyphicon-map-marker">
+            </i></cite></small>
+            <p>
+                <i class="glyphicon glyphicon-envelope"></i>{{nav.info.username}}
+                <br />
+                <i class="glyphicon glyphicon-globe"></i><a href="http://www.jquery2dotnet.com">{{nav.info.email}}</a>
+                <br />
+                <i class="glyphicon glyphicon-gift"></i>June 02, 1988</p>
+            <!-- Split button -->
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary">
+                    Social</button>
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span><span class="sr-only">Social</span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="https://plus.google.com/+Jquery2dotnet/posts">Google +</a></li>
+                    <li><a href="https://www.facebook.com/jquery2dotnet">Facebook</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Github</a></li>
+                </ul>
+            </div>
+        </div>
+        <a></a>
+        
+        
+        
+          &nbsp;
+        </div>
+      
+      </div>
+  </div>
+  
+  <ng-template #loggedOut>
+    <h1>sdwsd</h1>
+    <script>
+      this.router.navigate(['']);
+    </script>
+  </ng-template>

@@ -1,0 +1,23 @@
+<div class="container top-buffer">
+  
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+      <div class="card mb-3" style="width: 100%" *ngFor="let product of products">
+        <div class="row no-gutters">
+          <div class="col-md-3 image-spacing">
+            <a><img src="data:image/JPEG;base64,{{product.image}}" class="card-img" alt="..." 
+                                    [routerLink]="['/product-detail', product.id]"></a>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{product.name}}</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      </li>
+    </ul>
+  </div>
+

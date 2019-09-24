@@ -1,0 +1,66 @@
+<div *ngIf="isLoggedIn; else loggedOut">
+  Logged in as {{roles}}.
+</div>
+
+<ng-template #loggedOut>
+  <div class="container form_container">
+    <div class="d-flex justify-content-end h-100">
+      <div class="user_card">
+        <div class="d-flex justify-content-center">
+          <div class="brand_logo_container">
+            <img src="./assets/logo1.png" class="brand_logo" alt="Logo">
+          </div>
+        </div>
+        <div class="d-flex justify-content-center form_container">
+          <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+            <div class="input-group mb-3">
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+              </div>
+              <input type="text" class="form-control input_user" name="username" [(ngModel)]="form.username"
+                #username="ngModel" placeholder="username" value="" required />
+
+            </div>
+            <div *ngIf="f.submitted && username.invalid">
+              <div *ngIf="username.errors.required" style="background-color: red">Username is required</div>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-key"></i></span>
+              </div>
+              <input type="password" class="form-control" name="password" [(ngModel)]="form.password"
+                #password="ngModel" placeholder="password" required minlength="6" />
+            </div>
+            <div *ngIf="f.submitted && password.invalid">
+              <div *ngIf="password.errors.required" style="background-color: red">Password is required</div>
+              <div *ngIf="password.errors.minlength" style="background-color: red">Password must be at least 6
+                characters</div>
+            </div>
+            <div class="form-group remember-label">
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="customControlInline">
+              <label class="custom-control-label label-color" for="customControlInline">Remember me</label>
+            </div>
+          </div>
+
+            <div class="form-group remember-label">
+              <button class="btn login_btn">Login</button>
+              <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger">
+                Login failed: {{errorMessage}}
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="mt-4">
+          <div class="d-flex justify-content-center links label-color">
+            Don't have an account? <a href="register" class="ml-2">Sign Up</a>
+          </div>
+          <div class="d-flex justify-content-center links">
+            <a href="#">Forgot your password?</a>
+          </div>
+        </div>
+        <hr />
+      </div>
+    </div>
+  </div>
+</ng-template>
